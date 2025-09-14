@@ -14,7 +14,7 @@ export default function MusicPlayer() {
   const [playing, setPlaying] = useState<boolean>(() => localStorage.getItem("bgm:muted") !== "true");
   const [needsInteract, setNeedsInteract] = useState(false);
 
-  // mount: tạo thẻ audio nhưng KHÔNG tạo AudioContext
+  // mount: tạo thẻ audio và thử autoplay
   useEffect(() => {
     const audio = new Audio(bgmUrl);
     audio.loop = true;
@@ -26,16 +26,20 @@ export default function MusicPlayer() {
 
     const tryAutoplay = async () => {
       if (!playing) return;
+      
       try {
-        // thử autoplay trực tiếp (không AudioContext)
+        // thử autoplay trực tiếp
         await audio.play();
         setNeedsInteract(false);
-      } catch {
-        // bị chặn → đợi gesture rồi mới tạo AudioContext và play
+        console.log("Music autoplay successful");
+      } catch (error) {
+        console.log("Autoplay blocked, waiting for user interaction");
+        // bị chặn → đợi gesture
         setNeedsInteract(true);
+        
         const unlock = async () => {
           try {
-            // TẠO AUDIOCONTEXT Ở ĐÂY (sau gesture)
+            // TẠO AUDIOCONTEXT SAU GESTURE
             if (!ctxRef.current) {
               // @ts-ignore
               const AC = window.AudioContext || (window as any).webkitAudioContext;
@@ -43,14 +47,20 @@ export default function MusicPlayer() {
               const node = ctxRef.current.createMediaElementSource(audio);
               node.connect(ctxRef.current.destination);
             }
-            // Chỉ resume nếu context đã được tạo và chưa bị đóng
+            
+            // Resume context nếu cần
             if (ctxRef.current && ctxRef.current.state !== 'closed') {
               await ctxRef.current.resume();
             }
+            
             await audio.play();
             setNeedsInteract(false);
-          } catch {/* ignore */}
+            console.log("Music unlocked after user interaction");
+          } catch (err) {
+            console.log("Failed to unlock music:", err);
+          }
         };
+        
         const cleanups = [
           once("pointerdown", unlock),
           once("touchstart", unlock),
@@ -59,30 +69,35 @@ export default function MusicPlayer() {
           once("scroll", unlock),
           once("visibilitychange", unlock),
         ];
-        // cleanup khi unmount
+        
         return () => cleanups.forEach((c) => c && c());
       }
     };
 
+    // Thử autoplay ngay khi mount
     const cleanup = tryAutoplay();
+    
     return () => {
       if (typeof cleanup === "function") cleanup();
       audio.pause();
       audio.src = "";
       audioRef.current = null;
-      // Đóng AudioContext khi unmount
       if (ctxRef.current && ctxRef.current.state !== 'closed') {
         ctxRef.current.close();
       }
     };
-  }, []); // chỉ chạy một lần
+  }, [playing]); // chạy lại khi playing thay đổi
 
-  // phản ứng khi user bấm nút play/pause
+  // phản ứng khi user bấm nút play/pause (chỉ khi audio đã sẵn sàng)
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    
     if (playing) {
-      audio.play().catch(() => setNeedsInteract(true));
+      // Chỉ play nếu chưa đang play
+      if (audio.paused) {
+        audio.play().catch(() => setNeedsInteract(true));
+      }
     } else {
       audio.pause();
     }
