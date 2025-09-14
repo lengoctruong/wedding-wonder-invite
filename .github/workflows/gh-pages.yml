@@ -23,10 +23,11 @@ jobs:
       - name: Build with correct base
         env:
           OWNER: ${{ github.repository_owner }}
+          VITE_BUILD_ID: ${{ github.sha }}
         run: |
           REPO_NAME=${GITHUB_REPOSITORY#*/}
           if [ "$REPO_NAME" = "${OWNER}.github.io" ]; then BASE="/"; else BASE="/$REPO_NAME/"; fi
-          echo "Using base=$BASE"
+          echo "Using base=$BASE, build_id=$VITE_BUILD_ID"
           npm run build -- --base="$BASE"
       - name: SPA fallback (copy 404.html)
         run: cp dist/index.html dist/404.html
