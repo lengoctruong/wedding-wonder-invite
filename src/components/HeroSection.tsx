@@ -43,7 +43,7 @@ export const HeroSection = () => {
               {t('wednesday')}
             </div>
             <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-allura">
-              07
+              08
             </div>
             <div className="text-lg sm:text-xl md:text-2xl">
               <span className="text-lg sm:text-xl md:text-2xl">{t('october')}</span> <span className="text-xl sm:text-2xl md:text-3xl">2025</span>
