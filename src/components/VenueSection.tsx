@@ -8,7 +8,7 @@ export const VenueSection = () => {
   const { t } = useTranslation();
   
   const openMap = () => {
-    window.open('https://www.google.com/maps/place/Nh%C3%A0+h%C3%A0ng+ti%E1%BB%87c+c%C6%B0%E1%BB%9Bi+sao+mai/@11.1594903,107.2606274,17z/data=!3m1!4b1!4m6!3m5!1s0x3174f52cd3fcf547:0x2a2effd6c8aa3bf9!8m2!3d11.1594903!4d107.2632023!16s%2Fg%2F11strd501g?entry=ttu&g_ep=EgoyMDI1MDcyNy4wIKXMDSoASAFQAw%3D%3D', '_blank');
+    window.open('https://www.google.com/maps/place/Nh%C3%A0+v%C4%83n+h%C3%B3a+th%C3%B4n+H%E1%BB%99i+An+1/@14.9035796,108.9424051,17z/data=!3m1!4b1!4m6!3m5!1s0x3168f985174882e9:0x36dea74df5e025e3!8m2!3d14.9035796!4d108.9424051!16s%2Fg%2F11j01n7f3r?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D', '_blank');
   };
 
   return (
