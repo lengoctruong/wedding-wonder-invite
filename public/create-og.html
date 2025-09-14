@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; padding: 0; }
+        .og-container {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .og-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .og-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+        .og-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .og-subtitle {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        .og-date {
+            font-size: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="og-container">
+        <img src="../src/assets/optimized/VHH_9921.jpg" alt="Wedding" class="og-image">
+        <div class="og-overlay">
+            <div class="og-title">Ngọc Trường & Như Nguyệt</div>
+            <div class="og-subtitle">Wedding Invitation</div>
+            <div class="og-date">08 Oct 2025, 11:00 AM</div>
+        </div>
+    </div>
+</body>
+</html>
