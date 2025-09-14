@@ -1,0 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 350 20% 96%;
+    --foreground: 345 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 345 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 15% 15%;
+
+    --primary: 345 60% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 350 35% 85%;
+    --secondary-foreground: 345 40% 25%;
+
+    --muted: 350 20% 90%;
+    --muted-foreground: 345 20% 50%;
+
+    --accent: 15 80% 85%;
+    --accent-foreground: 345 40% 25%;
+
+    /* Wedding specific colors */
+    --romantic: 345 60% 45%;
+    --romantic-light: 350 35% 85%;
+    --gold: 45 100% 70%;
+    --gold-light: 45 100% 85%;
+    
+    /* Gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(var(--romantic)), hsl(var(--romantic-light)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+    --gradient-overlay: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+    
+    /* Shadows */
+    --shadow-romantic: 0 10px 30px -10px hsl(var(--romantic) / 0.3);
+    --shadow-elegant: 0 20px 40px -20px rgba(0,0,0,0.1);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    
+    /* Custom fonts */
+    --font-great-vibes: 'Great Vibes', cursive;
+    --font-alex-brush: 'Alex Brush', cursive;
+    --font-allura: 'Allura', cursive;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 345 25% 8%;
+    --foreground: 350 20% 95%;
+
+    --card: 345 20% 12%;
+    --card-foreground: 350 20% 95%;
+
+    --popover: 345 20% 12%;
+    --popover-foreground: 350 20% 95%;
+
+    --primary: 345 60% 60%;
+    --primary-foreground: 345 25% 8%;
+
+    --secondary: 345 20% 20%;
+    --secondary-foreground: 350 20% 95%;
+
+    --muted: 345 20% 20%;
+    --muted-foreground: 350 15% 65%;
+
+    --accent: 345 20% 20%;
+    --accent-foreground: 350 20% 95%;
+
+    /* Wedding dark mode colors */
+    --romantic: 345 60% 60%;
+    --romantic-light: 345 40% 40%;
+    --gold: 45 90% 60%;
+    --gold-light: 45 80% 70%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Remove any default margins/padding that might cause white space */
+  @media (max-width: 768px) {
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  html {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  #root {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure HeroSection takes full viewport height on mobile */
+  section:first-of-type {
+    min-height: 100vh !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+  }
+
+  /* Fix viewport height issues on mobile */
+  :root {
+    --vh: 1vh;
+  }
+  
+  /* Use custom viewport height for mobile */
+  section:first-of-type {
+    height: calc(var(--vh, 1vh) * 100) !important;
+    min-height: calc(var(--vh, 1vh) * 100) !important;
+  }
+}
+}
+
+@layer components {
+  .floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  /* Global floating hearts for entire page */
+  .floating-hearts.global {
+    position: fixed;
+    z-index: 10;
+  }
+  
+  .heart {
+    position: absolute;
+    font-size: 1rem;
+    color: hsl(var(--romantic) / 0.3);
+    animation: float 6s infinite linear;
+    user-select: none;
+  }
+
+  /* Responsive floating hearts for mobile */
+  @media (max-width: 768px) {
+    .heart {
+      font-size: 0.6rem;
+      color: hsl(var(--romantic) / 0.08);
+      opacity: 0.2;
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .heart {
+      font-size: 0.5rem;
+      color: hsl(var(--romantic) / 0.06);
+      opacity: 0.15;
+    }
+  }
+
+  /* Hide hearts completely on very small screens */
+  @media (max-width: 320px) {
+    .heart {
+      display: none;
+    }
+  }
+
+  /* Force mobile styles for all touch devices */
+  @media (hover: none) and (pointer: coarse) {
+    .heart {
+      font-size: 0.5rem !important;
+      color: hsl(var(--romantic) / 0.06) !important;
+      opacity: 0.15 !important;
+    }
+  }
+  
+  .petal {
+    position: absolute;
+    font-size: 0.8rem;
+    color: hsl(var(--accent) / 0.4);
+    animation: fall 8s infinite linear;
+    user-select: none;
+  }
+
+  /* New bling bling elements */
+  .star {
+    position: absolute;
+    font-size: 1.2rem;
+    color: hsl(var(--romantic) / 0.6);
+    animation: float 6s infinite linear;
+    user-select: none;
+    filter: drop-shadow(0 0 4px hsl(var(--romantic) / 0.4));
+  }
+  
+  .sparkle {
+    position: absolute;
+    font-size: 1rem;
+    color: hsl(var(--accent) / 0.7);
+    animation: sparkle 4s infinite linear;
+    user-select: none;
+    filter: drop-shadow(0 0 6px hsl(var(--accent) / 0.5));
+  }
+  
+  .diamond {
+    position: absolute;
+    font-size: 1.1rem;
+    color: hsl(var(--primary) / 0.8);
+    animation: diamond 7s infinite linear;
+    user-select: none;
+    filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6));
+  }
+  
+  .star2 {
+    position: absolute;
+    font-size: 0.9rem;
+    color: hsl(var(--romantic-light) / 0.5);
+    animation: star2 5s infinite linear;
+    user-select: none;
+    filter: drop-shadow(0 0 5px hsl(var(--romantic-light) / 0.4));
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-10vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes sparkle {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0.5);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    50% {
+      transform: scale(1);
+    }
+    90% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      transform: translateY(-10vh) rotate(360deg) scale(0.8);
+      opacity: 0;
+    }
+  }
+
+  @keyframes diamond {
+    0% {
+      transform: translateY(-10vh) rotate(0deg) scale(0.8);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+      transform: scale(1.3);
+    }
+    85% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      transform: translateY(100vh) rotate(-360deg) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes star2 {
+    0% {
+      transform: translateY(100vh) rotate(0deg) scale(0.6);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+    80% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      transform: translateY(-10vh) rotate(720deg) scale(0.7);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out;
+  }
+  
+  .text-gradient {
+    background: var(--gradient-romantic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE & Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .bg-romantic-gradient {
+    background: var(--gradient-romantic);
+  }
+  
+  .bg-gold-gradient {
+    background: var(--gradient-gold);
+  }
+  
+  .shadow-romantic {
+    box-shadow: var(--shadow-romantic);
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Protect specific images only */
+  .protected-image {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+  
+  /* Hide protected images when dev tools are open */
+  @media (max-width: 1px) {
+    .protected-image {
+      display: none !important;
+    }
+  }
+  
+  @media screen and (min-width: 0px) and (max-width: 0px) {
+    .protected-image {
+      display: none !important;
+    }
+  }
+  
+
+  
+  /* Section transition animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.8s ease-out;
+  }
+  
+  .font-great-vibes {
+    font-family: var(--font-great-vibes);
+    letter-spacing: 0.1em;
+  }
+  
+  .font-alex-brush {
+    font-family: var(--font-alex-brush);
+    letter-spacing: 0.05em;
+  }
+  
+  .font-allura {
+    font-family: var(--font-allura);
+    letter-spacing: 0.02em;
+  }
+}
