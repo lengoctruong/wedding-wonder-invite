@@ -14,33 +14,35 @@ export const VenueSection = () => {
   return (
     <section id="venue" className="py-20 bg-gradient-to-br from-muted/30 to-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4 leading-tight py-2 min-h-[3rem] md:min-h-[4rem]">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-4 leading-tight py-2 min-h-[3rem] md:min-h-[4rem]">
             {t('venueTitle')}
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground">
             {t('venueSubtitle')}
           </p>
         </div>
         
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Venue Image */}
             <div className="rounded-lg overflow-hidden">
               <img 
                 src={venueImage} 
                 alt="Wedding Venue - Grand Ballroom" 
+                loading="lazy"
+                decoding="async"
                 className="w-full h-auto object-contain block"
               />
             </div>
             
             {/* Venue Details */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div>
-                <h3 className="text-3xl font-bold text-romantic mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold text-romantic mb-4">
                   {t('venue')}
                 </h3>
-                <p className="text-lg text-muted-foreground mb-6">
+                <p className="text-base sm:text-lg text-muted-foreground mb-6">
                   {t('venueSubtitle')}
                 </p>
               </div>

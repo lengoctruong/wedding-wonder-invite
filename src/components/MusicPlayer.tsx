@@ -43,7 +43,10 @@ export default function MusicPlayer() {
               const node = ctxRef.current.createMediaElementSource(audio);
               node.connect(ctxRef.current.destination);
             }
-            await ctxRef.current.resume();
+            // Chỉ resume nếu context đã được tạo và chưa bị đóng
+            if (ctxRef.current && ctxRef.current.state !== 'closed') {
+              await ctxRef.current.resume();
+            }
             await audio.play();
             setNeedsInteract(false);
           } catch {/* ignore */}
@@ -67,6 +70,10 @@ export default function MusicPlayer() {
       audio.pause();
       audio.src = "";
       audioRef.current = null;
+      // Đóng AudioContext khi unmount
+      if (ctxRef.current && ctxRef.current.state !== 'closed') {
+        ctxRef.current.close();
+      }
     };
   }, []); // chỉ chạy một lần
 

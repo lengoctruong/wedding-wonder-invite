@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Clock } from "lucide-react";
-import heroImage from "@/assets/optimized/VHH_9921.jpg";
 import { FloatingElements } from "./FloatingElements";
 import { useTranslation } from "@/contexts/TranslationContext";
+import HeroImage from "./HeroImage";
 
 export const HeroSection = () => {
   const { t } = useTranslation();
@@ -12,12 +12,10 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen sm:h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-center bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
+      <div className="absolute inset-0">
+        <HeroImage />
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
       
@@ -25,7 +23,7 @@ export const HeroSection = () => {
       <FloatingElements />
       
       {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl mx-auto py-0">
+      <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-4xl mx-auto py-8 sm:py-0">
         {/* Save the Date */}
         <div className="animate-fade-in-up mb-1 sm:mb-8">
           <p className="text-base sm:text-lg md:text-xl font-light tracking-wider mb-1 sm:mb-4 opacity-90">
@@ -33,14 +31,14 @@ export const HeroSection = () => {
           </p>
           
           {/* Names */}
-          <div className="flex justify-center mb-1 sm:mb-6">
-            <h1 className="font-alex-brush text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-11xl leading-tight text-center break-words md:whitespace-nowrap">
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <h1 className="font-alex-brush text-2xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-11xl leading-tight text-center break-words md:whitespace-nowrap">
               Ngọc Trường & Như Nguyệt
             </h1>
           </div>
           
           {/* Date */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-6 md:p-8 mb-1 sm:mb-8 border border-white/20">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 border border-white/20">
             <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-1 sm:mb-2">
               {t('wednesday')}
             </div>
@@ -69,7 +67,7 @@ export const HeroSection = () => {
           </div>
           
           {/* Action Buttons - Reordered */}
-          <div className="flex flex-col sm:flex-row flex-wrap gap-1 sm:gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
             <Button 
               variant="outline" 
               size="lg"

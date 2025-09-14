@@ -18,20 +18,21 @@ export const CoupleIntro = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 !leading-[1.2]">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 !leading-[1.2]">
             {t('introduction')}
           </h2>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Bride */}
-          <Card className="max-h-[950px] shadow-elegant border-romantic/20 overflow-hidden group hover:shadow-romantic transition-all duration-300">
+          <Card className="max-h-[800px] sm:max-h-[950px] shadow-elegant border-romantic/20 overflow-hidden group hover:shadow-romantic transition-all duration-300">
             <div className="relative aspect-[3/4] w-full">
               <img 
                 src={brideImage} 
                 alt="Sarah - The Bride" 
                 loading="lazy"
+                decoding="async"
                 className="w-full object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -59,12 +60,13 @@ export const CoupleIntro = () => {
           </Card>
           
           {/* Groom */}
-          <Card className="max-h-[950px] shadow-elegant border-romantic/20 overflow-hidden group hover:shadow-romantic transition-all duration-300">
+          <Card className="max-h-[800px] sm:max-h-[950px] shadow-elegant border-romantic/20 overflow-hidden group hover:shadow-romantic transition-all duration-300">
             <div className="relative aspect-[3/4] w-full">
               <img
                 src={groomImage} 
                 alt="Michael - The Groom" 
                 loading="lazy"
+                decoding="async"
                 className="w-full object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>

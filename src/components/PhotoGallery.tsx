@@ -102,13 +102,13 @@ export const PhotoGallery = () => {
         </div>
 
                           {/* Main Gallery */}
-         <div className="max-w-7xl mx-auto relative px-8 sm:px-16">
+         <div className="max-w-7xl mx-auto relative px-4 sm:px-8 md:px-16">
            <div className="embla overflow-visible" ref={emblaRef}>
                             <div className="embla__container flex items-start pt-8 sm:pt-16 pb-4 sm:pb-8">
                  {galleryImages.map((image, index) => (
                    <div
                      key={index}
-                     className="embla__slide flex-[0_0_80%] sm:flex-[0_0_60%] md:flex-[0_0_50%] min-w-0 pl-2 sm:pl-4 pr-2 sm:pr-4 -ml-8 sm:-ml-16"
+                     className="embla__slide flex-[0_0_85%] sm:flex-[0_0_60%] md:flex-[0_0_50%] min-w-0 pl-2 sm:pl-4 pr-2 sm:pr-4 -ml-4 sm:-ml-8 md:-ml-16"
                    >
                                        <div
                                             className={`aspect-[4/5] overflow-hidden rounded-lg shadow-lg transition-all duration-500 group relative bg-transparent ${
@@ -139,7 +139,7 @@ export const PhotoGallery = () => {
            <Button
              variant="outline"
              size="icon"
-             className="absolute left-2 sm:left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-lg z-20 h-8 w-8 sm:h-10 sm:w-10"
+             className="absolute left-1 sm:left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-lg z-20 h-8 w-8 sm:h-10 sm:w-10"
              onClick={scrollPrev}
            >
              <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -148,7 +148,7 @@ export const PhotoGallery = () => {
            <Button
              variant="outline"
              size="icon"
-             className="absolute right-2 sm:right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-lg z-20 h-8 w-8 sm:h-10 sm:w-10"
+             className="absolute right-1 sm:right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full shadow-lg z-20 h-8 w-8 sm:h-10 sm:w-10"
              onClick={scrollNext}
            >
              <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
