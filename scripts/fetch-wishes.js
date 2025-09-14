@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/api/wishes', async (req, res) => {
     try {
-        const response = await fetch('https://formspree.io/api/0/forms/mvgqqwvd/submissions', {
+        const response = await fetch('https://formspree.io/api/0/forms/meoldydq/submissions', {
             headers: {
                 'Authorization': 'Bearer YOUR_FORMSPREE_API_TOKEN'
             }

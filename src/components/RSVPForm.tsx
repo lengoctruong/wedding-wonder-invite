@@ -58,7 +58,7 @@ export const RSVPForm = () => {
       });
       
       // Use fetch to submit without redirect
-      const response = await fetch('https://formspree.io/f/myzppkbj', {
+      const response = await fetch('https://formspree.io/f/meoldydq', {
         method: 'POST',
         body: formDataToSend,
         headers: {
